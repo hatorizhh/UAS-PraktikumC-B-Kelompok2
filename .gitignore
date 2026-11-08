@@ -1,0 +1,6 @@
+#Abaikan file objek dan executable hasil kompilasi C
+*.o
+*.exe
+*.out
+a.out
+program
