@@ -1,4 +1,4 @@
-# Project UAS Praktikum Pemrograman
+# Aplikasi Pencatat Keuangan Pribadi (Personal Expense Tracker)
 ## Anggota Team:
 1. Zian Hafiz
 2. M. Farhan Alfarisi
