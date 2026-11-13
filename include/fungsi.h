@@ -10,7 +10,7 @@ typedef struct {
 } CatatanKeuangan;
 
 // Fungsi yang Farhan Buat
-
+void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan)
 
 
 
