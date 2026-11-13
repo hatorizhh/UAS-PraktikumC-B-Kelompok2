@@ -11,8 +11,8 @@ typedef struct {
 
 // Fungsi yang Farhan Buat
 void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan)
-
-
+void tampilCatatan(CatatanKeuangan data[], int jumlah)
+void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru)
 
 
 // Fungsi yang Jessica Buat
