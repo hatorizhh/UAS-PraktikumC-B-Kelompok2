@@ -11,9 +11,6 @@ typedef struct {
     long nominal;
 } CatatanKeuangan;
 
-int simpanTransaksi(char *path, CatatanKeuangan data);
-
-
 
 
 
