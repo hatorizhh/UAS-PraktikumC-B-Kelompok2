@@ -3,8 +3,8 @@
 #include<string.h>
 #include"fungsi.h"
 
-int main(int argc, char *argv[]){
-    
+int main(){
+
 
 
 
