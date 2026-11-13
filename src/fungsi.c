@@ -2,6 +2,9 @@
 #include<stdio.h>
 #include<string.h>
 
+// Fungsi yang Zian Buat
+
+
 // Fungsi yang Farhan Buat
 void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan) {
     if (*jumlah >= MAKS) {
