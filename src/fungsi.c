@@ -39,6 +39,16 @@ void tampilCatatan(CatatanKeuangan data[], int jumlah) {
     }
 }
 
+void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru) {
+    for (int i = 0; i < jumlah; i++) {
+        if (data[i].id == id) {
+            data[i].nominal = nominalBaru;
+            printf("Nominal catatan ID %d berhasil diubah.\n", id);
+            return;
+        }
+    }
+    printf("ID tidak ditemukan.\n");
+}
 
 // Fungsi yang Jessica Buat
 
