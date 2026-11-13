@@ -62,5 +62,50 @@ void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru)
 
 
 // Fungsi yang Syaqila Buat
+int simpanKeBinary(CatatanKeuangan data[], int jumlah) {
+
+    FILE *file = fopen("data/keuangan.bin", "wb");
+
+    if (file == NULL) {
+        printf("Gagal membuka file!\n");
+        return 0;
+    }
+
+    fwrite(&jumlah, sizeof(int), 1, file);
+
+    fwrite(data, sizeof(CatatanKeuangan), jumlah, file);
+
+    fclose(file);
+
+    printf("Data berhasil disimpan!\n");
+    return 1;
+}
+
+int muatDariBinary(CatatanKeuangan data[]) {
+
+    FILE *file = fopen("data/keuangan.bin", "rb");
+
+    if (file == NULL) {
+        return 0;
+    }
+
+    int jumlah = 0;
+
+    if (fread(&jumlah, sizeof(int), 1, file) != 1 ||
+        jumlah < 0 || jumlah > MAKS) {
+        fclose(file);
+        return 0;
+    }
+
+    if (fread(data, sizeof(CatatanKeuangan),
+              jumlah, file) != (size_t)jumlah) {
+        fclose(file);
+        return 0;
+    }
+
+    fclose(file);
+
+    return jumlah;
+}
 
 
