@@ -9,11 +9,6 @@ typedef struct {
     long nominal;
 } CatatanKeuangan;
 
-// Fungsi yang Zian Buat
-void tampilkanCatatan(CatatanKeuangan data[], int jumlah);
-void ubahCatatan(CatatanKeuangan data[], int jumlah);
-void hapusCatatan(CatatanKeuangan data[], int *jumlah);
-
 // Fungsi yang Farhan Buat
 
 

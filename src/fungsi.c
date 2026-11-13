@@ -3,8 +3,7 @@
 #include<string.h>
 
 // Fungsi yang Zian Buat
-void tampilkanCatatan(CatatanKeuangan data[], int jumlah)(
-}
+
 
 // Fungsi yang Farhan Buat
 
