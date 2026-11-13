@@ -19,10 +19,10 @@ int main(int argc, char*argv[]){
                 if(Nominal<=0){
                     printf("");
                 }
+            simpanTransaksi(argv[2],argv[3],Nominal);
+            }   
         }
         else if(strcmp(argv[1],"--laporan")==0){
-            
-        }
             
         }
         else{
