@@ -1,7 +1,7 @@
 #include"fungsi.h"
 #include<stdio.h>
 #include<string.h>
-
+#define MAKS 100
 // Fungsi yang Zian Buat
 
 
