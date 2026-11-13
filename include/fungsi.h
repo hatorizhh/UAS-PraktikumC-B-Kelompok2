@@ -27,7 +27,8 @@ void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru)
 
 
 // Fungsi yang Syaqila Buat
-
+void simpanKeBinary(CatatanKeuangan data[], int jumlah);
+int muatDariBinary(CatatanKeuangan data[]);
 
 
 
