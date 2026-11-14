@@ -2,8 +2,6 @@
 #include<stdio.h>
 #include<string.h>
 #define MAKS 100
-// Fungsi yang Zian Buat
-
 
 // Fungsi yang Farhan Buat
 void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan) {

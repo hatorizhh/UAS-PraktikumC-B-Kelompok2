@@ -9,6 +9,12 @@ typedef struct {
     long nominal;
 } CatatanKeuangan;
 
+typedef struct {
+    double pemasukan;
+    double pengeluaran;
+    double saldo;
+} Ringkasan;
+
 // Fungsi yang Farhan Buat
 void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan)
 void tampilCatatan(CatatanKeuangan data[], int jumlah)
