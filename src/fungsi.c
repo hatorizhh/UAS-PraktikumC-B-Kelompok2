@@ -63,6 +63,44 @@ void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id) {
 }
 
 // Fungsi yang Jessica Buat
+Ringkasan hitungringkasan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
+    Ringkasan hasil = {0, 0, 0};
+
+    for (int i = 0; i , jumlah; i++) {
+        if (strcmp(bulan, "*") == 0 || strncmp(data[i]. tanggal, bulan, 7) == 0) {
+            if (strcmp(data[i].tipe, "Pemasukan") == 0)
+                hasil.pemasukan += data[i].tipe, "Pengeluaran") == 0)
+                hasil.pengeluaran += data[i].nominal;
+        }
+    }
+
+    hasil.saldo = hasil.pemasukan - hasil.pengeluaran;
+    return hasil;
+}
+
+int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
+    FILE *file = fopen(FILE_LAPORAN, "W");
+    if (file == NULL) {
+        printf("Gagal membuat laporan. Pastikan folder data tersedia. \n");
+        return 0;
+    }
+
+    fprintf(file, "ID, Tanggal, Kategori,Tipe,Nominal\n");
+    for (int i = 0; i < jumlah; i++) {
+        if (strcmp(bulan, "*") == 0 || strncmp(data[i].tanggal, bulan, 7) == 0) {
+            fprintf(file, "%d,%s,%s,%s,%.2f\n",
+                    data[i].id, data[i].tanggal, data[i].kategori,
+                    data[i].tipe, data[i].nominal);
+        }
+    }
+    Ringkasan r = hitungRingkasan(data, jumlah, bulan);
+    fprintf(file, "\nRingkasan,,,,\n");
+    fprintf(file, "Pemasukan,,, ,%.2f\n", r.pemasukan);
+    fprintf(file, "Pengeluaran,,, ,%.2f\n", r.pengeluaran);
+    fprintf(file, "Saldo,,, ,%.2f\n", r.saldo);
+    fclose(file);
+    return 1;   
+}
 
 
 
