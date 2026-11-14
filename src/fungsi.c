@@ -1,4 +1,4 @@
-#include"fungsi.h"
+#include"../include/fungsi.h"
 #include<stdio.h>
 #include<string.h>
 #define MAKS 100
