@@ -102,10 +102,6 @@ int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
     return 1;   
 }
 
-
-
-
-
 // Fungsi yang Inaya Buat
 void tampilBantuan(void) {
     printf("Personal Expense Tracker\n");
@@ -117,8 +113,6 @@ void tampilBantuan(void) {
     printf("Contoh:\n");
     printf("  program --tambah Pengeluaran Makan 25000\n");
 }
-
-
 
 // Fungsi yang Syaqila Buat
 int simpanKeBinary(CatatanKeuangan data[], int jumlah) {
