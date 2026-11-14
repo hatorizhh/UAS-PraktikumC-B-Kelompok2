@@ -19,7 +19,7 @@ typedef struct {
 void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan)
 void tampilCatatan(CatatanKeuangan data[], int jumlah)
 void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru)
-
+void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id)
 
 // Fungsi yang Jessica Buat
 
