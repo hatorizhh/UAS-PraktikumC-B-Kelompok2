@@ -48,6 +48,20 @@ void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru)
     printf("ID tidak ditemukan.\n");
 }
 
+void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id) {
+    for (int i = 0; i < *jumlah; i++) {
+        if (data[i].id == id) {
+            for (int j = i; j < *jumlah - 1; j++) {
+                data[j] = data[j + 1];
+            }
+            (*jumlah)--;
+            printf("Catatan berhasil dihapus.\n");
+            return;
+        }
+    }
+    printf("ID tidak ditemukan.\n");
+}
+
 // Fungsi yang Jessica Buat
 
 
