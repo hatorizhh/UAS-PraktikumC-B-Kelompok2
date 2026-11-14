@@ -16,14 +16,14 @@ typedef struct {
 } Ringkasan;
 
 // Fungsi yang Farhan Buat
-void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan)
-void tampilCatatan(CatatanKeuangan data[], int jumlah)
-void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru)
-void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id)
+void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan);
+void tampilCatatan(CatatanKeuangan data[], int jumlah);
+void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru);
+void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id);
 
 // Fungsi yang Jessica Buat
-Ringkasan hitungRingkasan(CatatanKeuangan data[], int jumlah, const char bulan[]) 
-int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]) 
+Ringkasan hitungRingkasan(CatatanKeuangan data[], int jumlah, const char bulan[]); 
+int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]);
 
 // Fungsi yang Inaya Buat
 void tampilBantuan(void);
