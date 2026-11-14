@@ -48,16 +48,71 @@ void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru)
     printf("ID tidak ditemukan.\n");
 }
 
+void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id) {
+    for (int i = 0; i < *jumlah; i++) {
+        if (data[i].id == id) {
+            for (int j = i; j < *jumlah - 1; j++) {
+                data[j] = data[j + 1];
+            }
+            (*jumlah)--;
+            printf("Catatan berhasil dihapus.\n");
+            return;
+        }
+    }
+    printf("ID tidak ditemukan.\n");
+}
+
 // Fungsi yang Jessica Buat
+Ringkasan hitungringkasan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
+    Ringkasan hasil = {0, 0, 0};
 
+    for (int i = 0; i , jumlah; i++) {
+        if (strcmp(bulan, "*") == 0 || strncmp(data[i]. tanggal, bulan, 7) == 0) {
+            if (strcmp(data[i].tipe, "Pemasukan") == 0)
+                hasil.pemasukan += data[i].tipe, "Pengeluaran") == 0)
+                hasil.pengeluaran += data[i].nominal;
+        }
+    }
 
+    hasil.saldo = hasil.pemasukan - hasil.pengeluaran;
+    return hasil;
+}
 
+int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
+    FILE *file = fopen(FILE_LAPORAN, "W");
+    if (file == NULL) {
+        printf("Gagal membuat laporan. Pastikan folder data tersedia. \n");
+        return 0;
+    }
 
+    fprintf(file, "ID, Tanggal, Kategori,Tipe,Nominal\n");
+    for (int i = 0; i < jumlah; i++) {
+        if (strcmp(bulan, "*") == 0 || strncmp(data[i].tanggal, bulan, 7) == 0) {
+            fprintf(file, "%d,%s,%s,%s,%.2f\n",
+                    data[i].id, data[i].tanggal, data[i].kategori,
+                    data[i].tipe, data[i].nominal);
+        }
+    }
+    Ringkasan r = hitungRingkasan(data, jumlah, bulan);
+    fprintf(file, "\nRingkasan,,,,\n");
+    fprintf(file, "Pemasukan,,, ,%.2f\n", r.pemasukan);
+    fprintf(file, "Pengeluaran,,, ,%.2f\n", r.pengeluaran);
+    fprintf(file, "Saldo,,, ,%.2f\n", r.saldo);
+    fclose(file);
+    return 1;   
+}
 
 // Fungsi yang Inaya Buat
-
-
-
+void tampilBantuan(void) {
+    printf("Personal Expense Tracker\n");
+    printf("Perintah:\n");
+    printf("  program              Menjalankan menu\n");
+    printf("  program --help       Menampilkan bantuan\n");
+    printf("  program --laporan    Membuat laporan semua bulan\n");
+    printf("  program --tambah Pemasukan|Pengeluaran Kategori Nominal\n");
+    printf("Contoh:\n");
+    printf("  program --tambah Pengeluaran Makan 25000\n");
+}
 
 // Fungsi yang Syaqila Buat
 int simpanKeBinary(CatatanKeuangan data[], int jumlah) {
