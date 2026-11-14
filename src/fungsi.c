@@ -1,7 +1,6 @@
 #include"../include/fungsi.h"
 #include<stdio.h>
 #include<string.h>
-#define MAKS 100
 
 // Fungsi yang Farhan Buat
 void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan) {
@@ -68,9 +67,10 @@ Ringkasan hitungringkasan(CatatanKeuangan data[], int jumlah, const char bulan[]
 
     for (int i = 0; i , jumlah; i++) {
         if (strcmp(bulan, "*") == 0 || strncmp(data[i]. tanggal, bulan, 7) == 0) {
-            if (strcmp(data[i].tipe, "Pemasukan") == 0)
-                hasil.pemasukan += data[i].tipe, "Pengeluaran") == 0)
-                hasil.pengeluaran += data[i].nominal;
+            if (strcmp(data[i].tipe, "Pemasukan") == 0){
+                hasil.pemasukan += data[i].nominal; }
+            if (strcmp(data[i].tipe, "Pengeluaran") == 0){
+                hasil.pengeluaran += data[i].nominal;}
         }
     }
 
