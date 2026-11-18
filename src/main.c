@@ -89,15 +89,25 @@ int main(int argc, char*argv[]){
         if(argc==5){
             if(strcmp(argv[1],"--tambah")==0){
                 double Nominal=atof(argv[4]);
-                if(strcmp(argv[2],"Pemasukan")==0){
-                    
-                }
-                else if(strcmp(argv[2],"Pengeluaran")==0){
-                    
-                }
                 if(Nominal<=0){
                     printf("Nominal tidak Valid");
                 }
+                else if(strcmp(argv[2],"Pemasukan")==0){
+                    strcpy(baru.tipe, argv[2]);
+                    strcpy(baru.kategori, argv[3]);
+                    baru.nominal = Nominal;
+                    tambahCatatan(data, &jumlah, baru);
+                    simpanKeBinary(data, jumlah);
+                }
+                else if(strcmp(argv[2],"Pengeluaran")==0){
+                    strcpy(baru.tipe, argv[2]);
+                    strcpy(baru.kategori, argv[3]);
+                    baru.nominal = Nominal;
+                    tambahCatatan(data, &jumlah, baru);
+                    simpanKeBinary(data, jumlah);
+                }
+                else {
+                    printf("Mohon pilih tipe antara pemasukan dan pengeluaran");
             }   
         }
         else if(strcmp(argv[1],"--laporan")==0){
