@@ -6,81 +6,59 @@
 
 int main(int argc, char*argv[]){
     CatatanKeuangan data[MAKS];
+    CatatanKeuangan baru;
     int jumlah = muatDariBinary(data);
-    int pilihan, id, i;
-    int jalan = 1;
+    int pilihan,id,i;
     double nominalBaru;
     char bulan[8];
-    CatatanKeuangan catatan;
-    Ringkasan r;
-    time_t sekarang;
-    struct tm *waktu;
+    Ringkasan Total;
 
 
     if(argc == 1){
-        while(jalan==1){
-            printf("\n=== PERSONAL EXPENSE TRACKER ===\n");
-            printf("1. Tambah catatan\n");
-            printf("2. Tampilkan catatan\n");
-            printf("3. Ubah nominal\n");
-            printf("4. Hapus catatan\n");
-            printf("5. Ringkasan keuangan\n");
-            printf("6. Ekspor laporan CSV\n");
+        do {
+            printf("\n========= PILIHAN MENU =========\n");
+            printf("1. Tambah Catatan\n");
+            printf("2. Tampilkan Catatan\n");
+            printf("3. Ubah Nominal Catatan\n");
+            printf("4. Hapus Catatan\n");
+            printf("5. Lihat Ringkasan Keuangan\n");
+            printf("6. Ekspor Laporan CSV\n");
             printf("0. Keluar\n");
-            printf("Pilihan: ");
-            scanf(" %d",&pilihan);
+            printf("Pilih menu: ");
+            scanf(" %d", &pilihan);
             switch(pilihan){   
-                case 1:
-                sekarang = time(NULL);
-                waktu = localtime(&sekarang);
-                strftime(catatan.tanggal, 11, "%Y-%m-%d", waktu);
-                printf("Tanggal (YYYY-MM-DD): ");
-                fgets(catatan.tanggal, sizeof(catatan.tanggal), stdin);
-                for (i = 0; i < strlen(catatan.tanggal); i++) {
-                    if (catatan.tanggal[i] == '\n') {
-                        catatan.tanggal[i] = '\0';
-                    }
-                }
-
-                printf("Kategori: ");
-                fgets(catatan.kategori, sizeof(catatan.kategori), stdin);
-                for (i = 0; i < strlen(catatan.kategori); i++) {
-                    if (catatan.kategori[i] == '\n') {
-                        catatan.kategori[i] = '\0';
-                    }
-                }
-
-                printf("Tipe (Pemasukan/Pengeluaran): ");
-                fgets(catatan.tipe, sizeof(catatan.tipe), stdin);
-                for (i = 0; i < strlen(catatan.tipe); i++) {
-                    if (catatan.tipe[i] == '\n') {
-                        catatan.tipe[i] = '\0';
-                    }
-                }
-
-                printf("Nominal: ");
-                if (scanf("%lf", &catatan.nominal) != 1 || catatan.nominal < 0) {
-                    printf("Nominal tidak valid.\n");
-                } else {
-                    if (strcmp(catatan.tipe, "Pemasukan") != 0 && strcmp(catatan.tipe, "Pengeluaran") != 0) {
-                        printf("Tipe harus Pemasukan atau Pengeluaran.\n");
-                    } else {
-                        tambahCatatan(data, &jumlah, catatan);
-                        simpanKeBinary(data, jumlah);
-                    }
-                }
+            case 1:
+               
                 break;
             case 2:
-
+                tampilCatatan(data,jumlah);
                 break;
             case 3:
-
+                printf("Masukkan id yang mau di ubah");scanf(" %d",&id);
+                printf("Masukkan Nominal: ");scanf(" %ld",&nominalBaru);
+                ubahCatatan(data, jumlah, id, nominalBaru);
+                simpanKeBinary(data, jumlah);
+                break;
+            case 4:
+                printf("Masukkan id yang mau di hapus");scanf(" %d",&id);
+                hapusCatatan(data,&jumlah,id);
+                simpanKeBinary(data, jumlah);
+                break;
+            case 5:
+                Total=hitungRingkasan(data,jumlah,"*");
+                printf("Total Pemasukan: %.2f\nTotal Pengeluaran: %.2f\nTotal Saldo: %.2f\n",Total.pemasukan,Total.pengeluaran,Total.saldo);
+                break;
+            case 6:
+                eksporLaporan(data,jumlah,"*");
+                break;
+            case 0:
+                printf("Keluar dari program.\n");
                 break;
             default:
                 printf("Input salah");
-                return 1;
+                break;
         }
-    }
+    }while(pilihan!=0);
 }
     else{
         if(argc==5){
@@ -115,9 +93,8 @@ int main(int argc, char*argv[]){
         }
         else{
             printf("Input yang kamu masukkan salah");
+            }
         }
     }
-
-
     return 0;
 }

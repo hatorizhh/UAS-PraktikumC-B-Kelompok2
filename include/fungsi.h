@@ -1,7 +1,7 @@
 #ifndef FUNGSI_H
 #define FUNGSI_H
-#define FILE_DB "data/keuangan.bin"
-#define FILE_LAPORAN "data/laporan_bulanan.csv"
+#define FILE_DB "../data/keuangan.bin"
+#define FILE_LAPORAN "../data/laporan_bulanan.csv"
 #define MAKS 100
 
 typedef struct {

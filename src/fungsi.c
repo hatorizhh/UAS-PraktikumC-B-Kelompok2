@@ -117,7 +117,7 @@ void tampilBantuan(void) {
 // Fungsi yang Syaqila Buat
 int simpanKeBinary(CatatanKeuangan data[], int jumlah) {
 
-    FILE *file = fopen("data/keuangan.bin", "wb");
+    FILE *file = fopen("../data/keuangan.bin", "wb");
 
     if (file == NULL) {
         printf("Gagal membuka file!\n");
