@@ -79,7 +79,7 @@ Ringkasan hitungringkasan(CatatanKeuangan data[], int jumlah, const char bulan[]
 }
 
 int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
-    FILE *file = fopen(FILE_LAPORAN, "W");
+    FILE *file = fopen(FILE_LAPORAN, "w");
     if (file == NULL) {
         printf("Gagal membuat laporan. Pastikan folder data tersedia. \n");
         return 0;
@@ -150,8 +150,7 @@ int muatDariBinary(CatatanKeuangan data[]) {
         return 0;
     }
 
-    if (fread(data, sizeof(CatatanKeuangan),
-              jumlah, file) != (size_t)jumlah) {
+    if (fread(data, sizeof(CatatanKeuangan),jumlah, file) != (size_t)jumlah) {
         fclose(file);
         return 0;
     }

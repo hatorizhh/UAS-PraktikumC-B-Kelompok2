@@ -34,7 +34,6 @@ int main(int argc, char*argv[]){
                 sekarang = time(NULL);
                 waktu = localtime(&sekarang);
                 strftime(catatan.tanggal, 11, "%Y-%m-%d", waktu);
-
                 printf("Tanggal (YYYY-MM-DD): ");
                 fgets(catatan.tanggal, sizeof(catatan.tanggal), stdin);
                 for (i = 0; i < strlen(catatan.tanggal); i++) {
@@ -62,9 +61,7 @@ int main(int argc, char*argv[]){
                 printf("Nominal: ");
                 if (scanf("%lf", &catatan.nominal) != 1 || catatan.nominal < 0) {
                     printf("Nominal tidak valid.\n");
-                    fflush(stdin);
                 } else {
-                    getchar();
                     if (strcmp(catatan.tipe, "Pemasukan") != 0 && strcmp(catatan.tipe, "Pengeluaran") != 0) {
                         printf("Tipe harus Pemasukan atau Pengeluaran.\n");
                     } else {
