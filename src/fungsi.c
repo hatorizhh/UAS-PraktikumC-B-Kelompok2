@@ -62,10 +62,10 @@ void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id) {
 }
 
 // Fungsi yang Jessica Buat
-Ringkasan hitungringkasan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
+Ringkasan hitungRingkasan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
     Ringkasan hasil = {0, 0, 0};
 
-    for (int i = 0; i , jumlah; i++) {
+    for (int i = 0; i < jumlah; i++) {
         if (strcmp(bulan, "*") == 0 || strncmp(data[i]. tanggal, bulan, 7) == 0) {
             if (strcmp(data[i].tipe, "Pemasukan") == 0){
                 hasil.pemasukan += data[i].nominal; }
@@ -117,7 +117,7 @@ void tampilBantuan(void) {
 // Fungsi yang Syaqila Buat
 int simpanKeBinary(CatatanKeuangan data[], int jumlah) {
 
-    FILE *file = fopen("../data/keuangan.bin", "wb");
+    FILE *file = fopen(FILE_DB, "wb");
 
     if (file == NULL) {
         printf("Gagal membuka file!\n");
@@ -136,7 +136,7 @@ int simpanKeBinary(CatatanKeuangan data[], int jumlah) {
 
 int muatDariBinary(CatatanKeuangan data[]) {
 
-    FILE *file = fopen("data/keuangan.bin", "rb");
+    FILE *file = fopen(FILE_DB, "rb");
 
     if (file == NULL) {
         return 0;

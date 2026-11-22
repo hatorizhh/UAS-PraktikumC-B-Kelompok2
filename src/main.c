@@ -12,7 +12,11 @@ int main(int argc, char*argv[]){
     double nominalBaru;
     char bulan[8];
     Ringkasan Total;
-
+    time_t t = time(NULL);
+    struct tm *tm_info = localtime(&t);
+    strftime(baru.tanggal, sizeof(baru.tanggal), "%Y-%m-%d", tm_info);
+    char Tipe[20];
+    char Kategori[20];
 
     if(argc == 1){
         do {
@@ -28,14 +32,21 @@ int main(int argc, char*argv[]){
             scanf(" %d", &pilihan);
             switch(pilihan){   
             case 1:
-               
+                printf("Masukkan Tipe(Pemasukan/Pengeluaran): ");scanf(" %s",Tipe);
+                printf("Masukkan Kategori: ");scanf(" %s",Kategori);
+                printf("Masukkan Nominal: ");scanf(" %lf",&nominalBaru);
+                strcpy(baru.tipe,Tipe);
+                strcpy(baru.kategori,Kategori);
+                baru.nominal=nominalBaru;
+                tambahCatatan(data,&jumlah,baru);
+                simpanKeBinary(data,jumlah);
                 break;
             case 2:
                 tampilCatatan(data,jumlah);
                 break;
             case 3:
                 printf("Masukkan id yang mau di ubah");scanf(" %d",&id);
-                printf("Masukkan Nominal: ");scanf(" %ld",&nominalBaru);
+                printf("Masukkan Nominal: ");scanf(" %lf",&nominalBaru);
                 ubahCatatan(data, jumlah, id, nominalBaru);
                 simpanKeBinary(data, jumlah);
                 break;
@@ -83,17 +94,17 @@ int main(int argc, char*argv[]){
                 }
                 else {
                     printf("Mohon pilih tipe antara pemasukan dan pengeluaran");
-            }   
+            }
+        }
+        else{
+            printf("Input yang kamu masukkan salah");
+            }
         }
         else if(strcmp(argv[1],"--laporan")==0){
             eksporLaporan(data,jumlah,"*");
         }
         else if(strcmp(argv[1],"--help")==0){
             tampilBantuan();
-        }
-        else{
-            printf("Input yang kamu masukkan salah");
-            }
         }
     }
     return 0;
