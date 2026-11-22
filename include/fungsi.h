@@ -9,19 +9,19 @@ typedef struct {
     char tanggal[11];
     char kategori[50];
     char tipe[12];
-    long nominal;
+    long long nominal;
 } CatatanKeuangan;
 
 typedef struct {
-    double pemasukan;
-    double pengeluaran;
-    double saldo;
+    long long pemasukan;
+    long long pengeluaran;
+    long long saldo;
 } Ringkasan;
 
 // Fungsi yang Farhan Buat
 void tambahCatatan(CatatanKeuangan data[], int *jumlah, CatatanKeuangan catatan);
 void tampilCatatan(CatatanKeuangan data[], int jumlah);
-void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru);
+void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, long long nominalBaru);
 void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id);
 
 // Fungsi yang Jessica Buat

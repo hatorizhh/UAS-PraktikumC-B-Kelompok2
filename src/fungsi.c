@@ -30,13 +30,13 @@ void tampilCatatan(CatatanKeuangan data[], int jumlah) {
            "ID", "Tanggal", "Kategori", "Tipe", "Nominal");
     printf("---------------------------------------------------------------\n");
     for (int i = 0; i < jumlah; i++) {
-        printf("%-4d %-12s %-15s %-15s %12.2f\n",
+        printf("%-4d %-12s %-15s %-15s %12lld\n",
                data[i].id, data[i].tanggal, data[i].kategori,
                data[i].tipe, data[i].nominal);
     }
 }
 
-void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, double nominalBaru) {
+void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, long long nominalBaru) {
     for (int i = 0; i < jumlah; i++) {
         if (data[i].id == id) {
             data[i].nominal = nominalBaru;
@@ -88,16 +88,16 @@ int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
     fprintf(file, "ID, Tanggal, Kategori,Tipe,Nominal\n");
     for (int i = 0; i < jumlah; i++) {
         if (strcmp(bulan, "*") == 0 || strncmp(data[i].tanggal, bulan, 7) == 0) {
-            fprintf(file, "%d,%s,%s,%s,%.2f\n",
+            fprintf(file, "%d,%s,%s,%s,%lld\n",
                     data[i].id, data[i].tanggal, data[i].kategori,
                     data[i].tipe, data[i].nominal);
         }
     }
     Ringkasan r = hitungRingkasan(data, jumlah, bulan);
-    fprintf(file, "\nRingkasan,,,,\n");
-    fprintf(file, "Pemasukan,,, ,%.2f\n", r.pemasukan);
-    fprintf(file, "Pengeluaran,,, ,%.2f\n", r.pengeluaran);
-    fprintf(file, "Saldo,,, ,%.2f\n", r.saldo);
+    fprintf(file, "\nRingkasan\n");
+    fprintf(file, "Pemasukan: %lld\n", r.pemasukan);
+    fprintf(file, "Pengeluaran: %lld\n", r.pengeluaran);
+    fprintf(file, "Saldo: %lld\n", r.saldo);
     fclose(file);
     return 1;   
 }

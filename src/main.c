@@ -9,7 +9,7 @@ int main(int argc, char*argv[]){
     CatatanKeuangan baru;
     int jumlah = muatDariBinary(data);
     int pilihan,id,i;
-    double nominalBaru;
+    long long nominalBaru;
     char bulan[8];
     Ringkasan Total;
     time_t t = time(NULL);
@@ -34,7 +34,7 @@ int main(int argc, char*argv[]){
             case 1:
                 printf("Masukkan Tipe(Pemasukan/Pengeluaran): ");scanf(" %s",Tipe);
                 printf("Masukkan Kategori: ");scanf(" %s",Kategori);
-                printf("Masukkan Nominal: ");scanf(" %lf",&nominalBaru);
+                printf("Masukkan Nominal: ");scanf(" %lld",&nominalBaru);
                 strcpy(baru.tipe,Tipe);
                 strcpy(baru.kategori,Kategori);
                 baru.nominal=nominalBaru;
@@ -46,18 +46,18 @@ int main(int argc, char*argv[]){
                 break;
             case 3:
                 printf("Masukkan id yang mau di ubah");scanf(" %d",&id);
-                printf("Masukkan Nominal: ");scanf(" %lf",&nominalBaru);
+                printf("Masukkan Nominal: ");scanf(" %lld",&nominalBaru);
                 ubahCatatan(data, jumlah, id, nominalBaru);
                 simpanKeBinary(data, jumlah);
                 break;
             case 4:
-                printf("Masukkan id yang mau di hapus");scanf(" %d",&id);
+                printf("Masukkan id yang mau di hapus: ");scanf(" %d",&id);
                 hapusCatatan(data,&jumlah,id);
                 simpanKeBinary(data, jumlah);
                 break;
             case 5:
                 Total=hitungRingkasan(data,jumlah,"*");
-                printf("Total Pemasukan: %.2f\nTotal Pengeluaran: %.2f\nTotal Saldo: %.2f\n",Total.pemasukan,Total.pengeluaran,Total.saldo);
+                printf("Total Pemasukan: %lld\nTotal Pengeluaran: %lld\nTotal Saldo: %lld\n",Total.pemasukan,Total.pengeluaran,Total.saldo);
                 break;
             case 6:
                 eksporLaporan(data,jumlah,"*");
@@ -74,7 +74,7 @@ int main(int argc, char*argv[]){
     else{
         if(argc==5){
             if(strcmp(argv[1],"--tambah")==0){
-                double Nominal=atof(argv[4]);
+                long long Nominal=atof(argv[4]);
                 if(Nominal<=0){
                     printf("Nominal tidak Valid");
                 }
