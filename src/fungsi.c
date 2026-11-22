@@ -67,9 +67,9 @@ Ringkasan hitungRingkasan(CatatanKeuangan data[], int jumlah, const char bulan[]
 
     for (int i = 0; i < jumlah; i++) {
         if (strcmp(bulan, "*") == 0 || strncmp(data[i]. tanggal, bulan, 7) == 0) {
-            if (strcmp(data[i].tipe, "Pemasukan") == 0){
+            if (strcmp(data[i].tipe, "Pemasukan") == 0 ||strcmp(data[i].tipe, "pemasukan") == 0){
                 hasil.pemasukan += data[i].nominal; }
-            if (strcmp(data[i].tipe, "Pengeluaran") == 0){
+            if (strcmp(data[i].tipe, "Pengeluaran") == 0 ||strcmp(data[i].tipe, "pengeluaran") == 0){
                 hasil.pengeluaran += data[i].nominal;}
         }
     }

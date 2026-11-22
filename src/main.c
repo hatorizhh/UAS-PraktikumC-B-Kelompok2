@@ -33,8 +33,24 @@ int main(int argc, char*argv[]){
             switch(pilihan){   
             case 1:
                 printf("Masukkan Tipe(Pemasukan/Pengeluaran): ");scanf(" %s",Tipe);
+                if(strcmp(Tipe,"Pemasukan")==0){
+                }
+                else if(strcmp(Tipe,"pemasukan")==0){
+                }
+                else if(strcmp(Tipe,"Pengeluaran")==0){
+                }
+                else if(strcmp(Tipe,"pengeluaran")==0){
+                }
+                else{
+                    printf("Mohon pilih tipe antara pemasukan dan pengeluaran\n");
+                    break;
+                }
                 printf("Masukkan Kategori: ");scanf(" %s",Kategori);
                 printf("Masukkan Nominal: ");scanf(" %lld",&nominalBaru);
+                if(nominalBaru<=0){
+                    printf("Nominal tidak valid\n");
+                    break;
+                }
                 strcpy(baru.tipe,Tipe);
                 strcpy(baru.kategori,Kategori);
                 baru.nominal=nominalBaru;
@@ -45,7 +61,7 @@ int main(int argc, char*argv[]){
                 tampilCatatan(data,jumlah);
                 break;
             case 3:
-                printf("Masukkan id yang mau di ubah");scanf(" %d",&id);
+                printf("Masukkan id yang mau di ubah: ");scanf(" %d",&id);
                 printf("Masukkan Nominal: ");scanf(" %lld",&nominalBaru);
                 ubahCatatan(data, jumlah, id, nominalBaru);
                 simpanKeBinary(data, jumlah);
@@ -60,13 +76,18 @@ int main(int argc, char*argv[]){
                 printf("Total Pemasukan: %lld\nTotal Pengeluaran: %lld\nTotal Saldo: %lld\n",Total.pemasukan,Total.pengeluaran,Total.saldo);
                 break;
             case 6:
-                eksporLaporan(data,jumlah,"*");
+                if(eksporLaporan(data,jumlah,"*")==1){
+                    printf("Ekspor Berhasil\n");
+                }
+                else{
+                    printf("Ekspor gagal\n");
+                }
                 break;
             case 0:
                 printf("Keluar dari program.\n");
                 break;
             default:
-                printf("Input salah");
+                printf("Input salah\n");
                 break;
         }
     }while(pilihan!=0);
@@ -76,16 +97,16 @@ int main(int argc, char*argv[]){
             if(strcmp(argv[1],"--tambah")==0){
                 long long Nominal=atof(argv[4]);
                 if(Nominal<=0){
-                    printf("Nominal tidak Valid");
+                    printf("Nominal tidak Valid\n");
                 }
-                else if(strcmp(argv[2],"Pemasukan")==0){
+                else if(strcmp(argv[2],"Pemasukan")==0 || strcmp(argv[2],"pemasukan")==0 ){
                     strcpy(baru.tipe, argv[2]);
                     strcpy(baru.kategori, argv[3]);
                     baru.nominal = Nominal;
                     tambahCatatan(data, &jumlah, baru);
                     simpanKeBinary(data, jumlah);
                 }
-                else if(strcmp(argv[2],"Pengeluaran")==0){
+                else if(strcmp(argv[2],"Pengeluaran")==0 || strcmp(argv[2],"pengeluaran")==0){
                     strcpy(baru.tipe, argv[2]);
                     strcpy(baru.kategori, argv[3]);
                     baru.nominal = Nominal;
@@ -93,18 +114,26 @@ int main(int argc, char*argv[]){
                     simpanKeBinary(data, jumlah);
                 }
                 else {
-                    printf("Mohon pilih tipe antara pemasukan dan pengeluaran");
+                    printf("Mohon pilih tipe antara pemasukan dan pengeluaran\n");
             }
         }
         else{
-            printf("Input yang kamu masukkan salah");
+            printf("Input yang kamu masukkan salah\n");
             }
         }
         else if(strcmp(argv[1],"--laporan")==0){
-            eksporLaporan(data,jumlah,"*");
+            if(eksporLaporan(data,jumlah,"*")==1){
+                printf("Ekspor Berhasil\n");
+                }
+                else{
+                    printf("Ekspor gagal\n");
+                }
         }
         else if(strcmp(argv[1],"--help")==0){
             tampilBantuan();
+        }
+        else{
+            printf("Mohon masukin intruksi yang jelas, untuk instruksi bisa gunakan perintah --help\n");
         }
     }
     return 0;
