@@ -62,23 +62,21 @@ void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id) {
 }
 
 // Fungsi yang Jessica Buat
-Ringkasan hitungRingkasan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
+Ringkasan hitungRingkasan(CatatanKeuangan data[], int jumlah) {
     Ringkasan hasil = {0, 0, 0};
 
     for (int i = 0; i < jumlah; i++) {
-        if (strcmp(bulan, "*") == 0 || strncmp(data[i]. tanggal, bulan, 7) == 0) {
             if (strcmp(data[i].tipe, "Pemasukan") == 0 ||strcmp(data[i].tipe, "pemasukan") == 0){
                 hasil.pemasukan += data[i].nominal; }
             if (strcmp(data[i].tipe, "Pengeluaran") == 0 ||strcmp(data[i].tipe, "pengeluaran") == 0){
                 hasil.pengeluaran += data[i].nominal;}
-        }
     }
 
     hasil.saldo = hasil.pemasukan - hasil.pengeluaran;
     return hasil;
 }
 
-int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
+int eksporLaporan(CatatanKeuangan data[], int jumlah) {
     FILE *file = fopen(FILE_LAPORAN, "w");
     if (file == NULL) {
         printf("Gagal membuat laporan. Pastikan folder data tersedia. \n");
@@ -87,13 +85,9 @@ int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]) {
 
     fprintf(file, "ID, Tanggal, Kategori,Tipe,Nominal\n");
     for (int i = 0; i < jumlah; i++) {
-        if (strcmp(bulan, "*") == 0 || strncmp(data[i].tanggal, bulan, 7) == 0) {
-            fprintf(file, "%d,%s,%s,%s,%lld\n",
-                    data[i].id, data[i].tanggal, data[i].kategori,
-                    data[i].tipe, data[i].nominal);
-        }
+            fprintf(file, "%d,%s,%s,%s,%lld\n",data[i].id, data[i].tanggal, data[i].kategori, data[i].tipe, data[i].nominal);
     }
-    Ringkasan r = hitungRingkasan(data, jumlah, bulan);
+    Ringkasan r = hitungRingkasan(data, jumlah);
     fprintf(file, "\nRingkasan\n");
     fprintf(file, "Pemasukan: %lld\n", r.pemasukan);
     fprintf(file, "Pengeluaran: %lld\n", r.pengeluaran);
@@ -108,7 +102,7 @@ void tampilBantuan(void) {
     printf("Perintah:\n");
     printf("  program              Menjalankan menu\n");
     printf("  program --help       Menampilkan bantuan\n");
-    printf("  program --laporan    Membuat laporan semua bulan\n");
+    printf("  program --laporan    Membuat laporan didalam csv\n");
     printf("  program --tambah Pemasukan|Pengeluaran Kategori Nominal\n");
     printf("Contoh:\n");
     printf("  program --tambah Pengeluaran Makan 25000\n");

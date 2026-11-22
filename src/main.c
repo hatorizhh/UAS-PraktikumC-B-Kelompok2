@@ -10,7 +10,6 @@ int main(int argc, char*argv[]){
     int jumlah = muatDariBinary(data);
     int pilihan,id,i;
     long long nominalBaru;
-    char bulan[8];
     Ringkasan Total;
     time_t t = time(NULL);
     struct tm *tm_info = localtime(&t);
@@ -72,11 +71,11 @@ int main(int argc, char*argv[]){
                 simpanKeBinary(data, jumlah);
                 break;
             case 5:
-                Total=hitungRingkasan(data,jumlah,"*");
+                Total=hitungRingkasan(data,jumlah);
                 printf("Total Pemasukan: %lld\nTotal Pengeluaran: %lld\nTotal Saldo: %lld\n",Total.pemasukan,Total.pengeluaran,Total.saldo);
                 break;
             case 6:
-                if(eksporLaporan(data,jumlah,"*")==1){
+                if(eksporLaporan(data,jumlah)==1){
                     printf("Ekspor Berhasil\n");
                 }
                 else{
@@ -122,7 +121,7 @@ int main(int argc, char*argv[]){
             }
         }
         else if(strcmp(argv[1],"--laporan")==0){
-            if(eksporLaporan(data,jumlah,"*")==1){
+            if(eksporLaporan(data,jumlah)==1){
                 printf("Ekspor Berhasil\n");
                 }
                 else{

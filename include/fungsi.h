@@ -25,8 +25,8 @@ void ubahCatatan(CatatanKeuangan data[], int jumlah, int id, long long nominalBa
 void hapusCatatan(CatatanKeuangan data[], int *jumlah, int id);
 
 // Fungsi yang Jessica Buat
-Ringkasan hitungRingkasan(CatatanKeuangan data[], int jumlah, const char bulan[]); 
-int eksporLaporan(CatatanKeuangan data[], int jumlah, const char bulan[]);
+Ringkasan hitungRingkasan(CatatanKeuangan data[], int jumlah); 
+int eksporLaporan(CatatanKeuangan data[], int jumlah);
 
 // Fungsi yang Inaya Buat
 void tampilBantuan(void);
