@@ -132,7 +132,7 @@ int main(int argc, char*argv[]){
             tampilBantuan();
         }
         else{
-            printf("Mohon masukin intruksi yang jelas, untuk instruksi bisa gunakan perintah --help\n");
+            printf("Mohon masukin intruksi yang jelas, untuk melihat instruksi bisa gunakan perintah --help\n");
         }
     }
     return 0;

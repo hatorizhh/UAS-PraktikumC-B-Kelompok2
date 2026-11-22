@@ -100,10 +100,10 @@ int eksporLaporan(CatatanKeuangan data[], int jumlah) {
 void tampilBantuan(void) {
     printf("Personal Expense Tracker\n");
     printf("Perintah:\n");
-    printf("  program              Menjalankan menu\n");
-    printf("  program --help       Menampilkan bantuan\n");
-    printf("  program --laporan    Membuat laporan didalam csv\n");
-    printf("  program --tambah Pemasukan|Pengeluaran Kategori Nominal\n");
+    printf("  nama-program              Menjalankan menu\n");
+    printf("  nama-program --help       Menampilkan bantuan\n");
+    printf("  nama-program --laporan    Membuat laporan didalam csv\n");
+    printf("  nama-program --tambah Pemasukan|Pengeluaran Kategori Nominal\n");
     printf("Contoh:\n");
     printf("  program --tambah Pengeluaran Makan 25000\n");
 }
